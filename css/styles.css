@@ -1,0 +1,25 @@
+/* Votre Style */
+
+/*ul {
+  background: #bbb;
+}*/
+li, [class*="grid"] > * {
+ /* background: #ccc; */
+}
+
+li:hover.m_menu {
+    font-size: 1.8rem;
+}
+header, footer {
+  background: #ddd;
+}
+main {
+  background: #eee;
+}
+aside {
+  background: #aaa;
+}
+
+.input-text {
+    width: 100%;
+}

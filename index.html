@@ -1,0 +1,41 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>CucumberFeaturesManager</title>
+    <link rel="stylesheet" href="css/knacss.css" media="all">
+    <link rel="stylesheet" href="css/styles.css" media="all">
+  </head>
+  <body>
+
+  <header id="header" role="banner" class="pam">
+  <h1>Manage your Cucumber projects</h1>
+  <nav id="header-nav">
+      <ul class="pam"><li class="pam inbl m_menu" id="select-folder">Select working folder</li></ul>
+      <p><label for="actual-folder">Working Folder:</label><input type="text" class="input-text" placeholder="Please select a folder" id="actual-folder" disabled="disabled"/></p>
+  </nav>
+  </header>
+  <div class="flex-container">
+    <aside class="mod w20 pam aside">
+      <nav id="navigation" role="navigation">
+        <ul class="pam">
+          <li class="pam inbl m_menu" id="allTags" onclick="getAllTags()">Get all Tags</li>
+      </li>
+        </ul>
+      </nav>
+    </aside>
+    <main id="main" role="main" class="flex-item-fluid pam">
+      <p id ="hello"></p>
+    </main>
+  </div>
+  <!-- footer id="footer" role="contentinfo" class="pam">
+    Lorem Elsass ipsum lacus leverwurscht Wurschtsalad mamsell Gal. gewurztraminer turpis, suspendisse commodo Oberschaeffolsheim ornare aliquam semper Miss Dahlias Mauris turpis sagittis kuglopf eleifend dignissim baeckeoffe geht's Richard Schirmeck mollis habitant schnaps ante et sit leo schpeck sit Salu bissame Salut bisamme varius quam. amet elementum nullam bissame bredele Heineken picon bière gal sed risus, condimentum Verdammi ch'ai ac réchime météor barapli s'guelt quam, non Christkindelsmärik blottkopf, Carola tellus rucksack vielmols, Gal !
+</footer-->
+
+  </body>
+  <script src="local-communication.js"></script>
+  <script src="all-tags.js"></script>
+  <script>document.getElementById('select-folder').addEventListener('click',selectWorkingFolder,false);</script>
+</html>

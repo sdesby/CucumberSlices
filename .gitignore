@@ -1,0 +1,5 @@
+#Exclude all nodejs modules
+node_modules
+
+# Python compiled files
+**.pyc
