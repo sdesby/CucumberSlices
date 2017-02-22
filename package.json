@@ -1,21 +1,18 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "cucumber-slices",
+  "version": "0.1.0",
+  "description": "Manage Features, Scenarios, Steps and Tags of your Cucumber projects",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/sdesby/CucumberSlices",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "cucumber",
+    "cucumber-slices"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "sdesby",
+  "license": "",
   "devDependencies": {
     "electron": "^1.4.1"
   }
