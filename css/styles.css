@@ -1,25 +1,77 @@
-/* Votre Style */
-
-/*ul {
-  background: #bbb;
-}*/
-li, [class*="grid"] > * {
- /* background: #ccc; */
+html, body {
+    width: 100%;
+    height: 100%;
 }
 
-li:hover.m_menu {
-    font-size: 1.8rem;
+body {
+    background-color: #B8E986;
+    font-family: Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-header, footer {
-  background: #ddd;
+
+/* HEADER : */
+
+header {
+    background-color: #39B54A;
+    border-radius: 10px 10px 0px 0px;
 }
-main {
-  background: #eee;
+
+h1 {
+    text-align: center;
+    padding: 20px;
 }
+
+#working-directory-div {
+    padding: 0px 20px 20px 20px;
+}
+
 aside {
-  background: #aaa;
+    float: left;
+    width: 20%;
+    height: 100%;
+    background: #39B54A;
 }
 
-.input-text {
+.aside-li {
+    list-style-type: none;
+    margin: 3px;
+}
+
+.aside-li:hover {
+    font-size: 18px;
+}
+
+#main-content {
+    height: 100%;
+}
+
+main {
+    float: right;
+    padding: 10px;
+    width: 78%;
+    height: 100%;
+    background-color: white;
+}
+
+#actual-folder {
     width: 100%;
 }
+
+.answer-container {
+    border-bottom: 1px solid black;
+    padding-top: 1px;
+    padding-left: 2px;
+}
+
+.key{
+    height: 30px;
+    vertical-align: center;
+    width: 100%;
+}
+
+.key:hover {
+    background-color: #39B54A;
+}
+
+/* .values {
+    display: none;
+}*/

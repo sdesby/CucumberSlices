@@ -46,21 +46,22 @@ function getFilesForTag() {
         pyshell.send(working_folder);
 
         pyshell.on('message', function(message) {
-        console.log(message)
         var json_from_python = JSON.parse(message);
-        var result = "<div><b>";
+        var result = "";
         for (key in json_from_python) {
-            result = result + key + "</b><ul>";
+            result += "<div class=\"answer-container\">";
+            result += "<div class=\"key\"><b>" + key + "</b></div>";
+
             var values = json_from_python[key];
             values.sort();
+            result += "<div class=\"values\"><ul>";
             for (var value in values) {
                 result += "<li>" + values[value] + "</li>\n";
             }
             result += "</ul></div>";
+            result+= "</div>";
         }
-
         document.getElementById("main").innerHTML = result;
-        // return message
         });
 
         pyshell.end(function (err) {
