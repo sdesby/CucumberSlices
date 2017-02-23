@@ -1,0 +1,45 @@
+{
+    "fr": {
+      "and": [
+        "Et "
+      ],
+      "but": [
+        "Mais "
+      ],
+      "given": [
+        "Soit ",
+        "Etant donné ",
+        "Étant donné "
+      ],
+      "then": [
+        "Alors "
+      ],
+      "when": [
+        "Quand ",
+        "Lorsque ",
+        "Lorsqu'"
+      ]
+  },
+  "en": {
+    "and": [
+      "* ",
+      "And "
+    ],
+    "but": [
+      "* ",
+      "But "
+    ],
+    "given": [
+      "* ",
+      "Given "
+    ],
+    "then": [
+      "* ",
+      "Then "
+    ],
+    "when": [
+      "* ",
+      "When "
+    ]
+  }
+}

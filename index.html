@@ -1,39 +1,47 @@
 <!doctype html>
 <html class="no-js" lang="fr">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Cucumber Slices</title>
     <link rel="stylesheet" href="css/styles.css" media="all">
-  </head>
-  <body>
+</head>
 
-  <header id="header" role="banner">
-  <h1>Manage your Cucumber projects</h1>
-  <div id="working-directory-div">
-      <label for="actual-folder">Working Folder:</label>
-      <button id="select-folder">Select working folder</button>
-      <p><input type="text" class="input-text" placeholder="Please select a folder" id="actual-folder" disabled="disabled" required/></p>
-  </div>
-  </header>
-  <div id="main-content">
-    <aside>
-      <nav id="navigation" role="navigation">
-        <ul>
-          <li class="aside-li" id="allTags" onclick="getAllTags()">Get all Tags</li>
-          <li class="aside-li" id="filesForTag" onclick="getFilesForTag()">Get files for tags</li>
-          <li class="aside-li" id="tagsForFile" onclick="getTagsForFile()">Get tags for files</li>
-          <li class="aside-li" id="stepsForTag" onclick="chooseTag()">Get steps for tag</li>
-        </ul>
-      </nav>
-    </aside>
-    <main id="main" role="main" class="flex-item-fluid pam">
-    </main>
-  </div>
-  </body>
-  <script>window.$ = window.jQuery = require('./jquery-3.1.1.min.js');</script>
-  <script src="local-communication.js"></script>
-  <script src="tags-features.js"></script>
-  <script>document.getElementById('select-folder').addEventListener('click',selectWorkingFolder,false);</script>
+<body>
+
+    <header id="header" role="banner">
+        <h1>Manage your Cucumber projects</h1>
+        <div id="working-directory-div">
+            <label for="actual-folder">Working Folder:</label>
+            <button id="select-folder">Select working folder</button>
+            <p><input type="text" class="input-text" placeholder="Please select a folder" id="actual-folder" disabled="disabled" required/></p>
+        </div>
+
+    </header>
+    <div id="main-content">
+        <aside>
+            <nav id="navigation" role="navigation">
+                <ul>
+                    <li class="aside-li" id="allTags" onclick="getAllTags()">Get all Tags</li>
+                    <li class="aside-li" id="filesForTag" onclick="getFilesForTag()">Get files for tags</li>
+                    <li class="aside-li" id="tagsForFile" onclick="getTagsForFile()">Get tags for files</li>
+                    <li class="aside-li" id="stepsForTag" onclick="chooseTag()">Get steps for tag</li>
+                </ul>
+            </nav>
+        </aside>
+        <main id="main" role="main" class="flex-item-fluid pam">
+        </main>
+    </div>
+</body>
+<script>
+    window.$ = window.jQuery = require('./jquery-3.1.1.min.js');
+</script>
+<script src="local-communication.js"></script>
+<script src="tags-features.js"></script>
+<script>
+    document.getElementById('select-folder').addEventListener('click', selectWorkingFolder, false);
+</script>
+
 </html>

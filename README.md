@@ -5,15 +5,17 @@ Knowing all of this, help you write better Gherkin steps and organize your proje
 
 ## Requirement
 
-- node.js
+### Node
+- [node.js](https://nodejs.org/en/ "link to node.js")
 - npm
-- electron
-- python-shell _// Module to call python scripts needed in the app_
-- python (with pip)
+- [electron](https://electron.atom.io/ "link to electron")
+- [python-shell](https://github.com/extrabacon/python-shell "link to pyshel module") _// Module to call python scripts needed in the app_
+- python 2 (with pip)
+
 
 ## Install
 
 Once you have intalled node.js and clone the project:
 
-1. Go to your project folder 
+1. Go to your project folder
 2. Run `npm install`. It will install electron framework
