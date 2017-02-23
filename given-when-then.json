@@ -1,0 +1,66 @@
+{
+    "fr": {
+      "and": [
+        "Et "
+      ],
+      "but": [
+        "Mais "
+      ],
+      "given": [
+        "Soit ",
+        "Etant donné ",
+        "Étant donné "
+      ],
+      "then": [
+        "Alors "
+      ],
+      "when": [
+        "Quand ",
+        "Lorsque ",
+        "Lorsqu'"
+      ]
+  },
+  "en": {
+    "and": [
+      "* ",
+      "And "
+    ],
+    "background": [
+      "Background"
+    ],
+    "but": [
+      "* ",
+      "But "
+    ],
+    "examples": [
+      "Examples",
+      "Scenarios"
+    ],
+    "feature": [
+      "Feature",
+      "Business Need",
+      "Ability"
+    ],
+    "given": [
+      "* ",
+      "Given "
+    ],
+    "name": "English",
+    "native": "English",
+    "scenario": [
+      "Scenario"
+    ],
+    "scenarioOutline": [
+      "Scenario Outline",
+      "Scenario Template"
+    ],
+    "then": [
+      "* ",
+      "Then "
+    ],
+    "when": [
+      "* ",
+      "When "
+    ]
+  }
+}

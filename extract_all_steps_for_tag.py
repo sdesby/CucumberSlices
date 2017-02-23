@@ -6,6 +6,8 @@ import argparse
 import logging
 import sys
 import json
+import codecs
+from collections import defaultdict
 
 root = logging.getLogger()
 root.setLevel(logging.DEBUG)
@@ -23,6 +25,7 @@ parser = argparse.ArgumentParser(description='Process feature files from folder 
 #parser.add_option("-t", "--tag", dest="tagname", help="tag to extract scenarios from. Default is \"@excalibur\"", default="@excalibur")
 parser.add_argument("folder", type=str)
 parser.add_argument("tag", type=str)
+parser.add_argument("keywords", type=str)
 args = parser.parse_args()
 
 #folder_name = raw_input("Enter the folder you want to extract the steps from : ")
@@ -38,7 +41,7 @@ def fetch_keyword_steps(files, keyword):
         fic = open(f, "r")
         lines = fic.readlines()
         for l in lines:
-            index = l.find(keyword.encode("UTF-8"))
+            index = l.find(keyword)
             if index != -1:
                 steps.append(l.lstrip())
     fic.close()
@@ -67,16 +70,19 @@ try:
             fic = open(f, "r")
             lines = fic.readlines()
             for l in lines:
-                index_for_tag = l.find(tag_name.encode("UTF-8"))
+                index_for_tag = l.find(tag_name)
                 if index_for_tag != -1 :
                     feature_files_with_tag.append(f)
             fic.close()
 
-        print fetch_keyword_steps(feature_files_with_tag, u"Soit")
-        print fetch_keyword_steps(feature_files_with_tag, u"Etant donné")
-        print fetch_keyword_steps(feature_files_with_tag, u"Quand")
-        print fetch_keyword_steps(feature_files_with_tag, u"Alors")
-        print fetch_keyword_steps(feature_files_with_tag, u"Et ")
+        result_dict = defaultdict(list)
+        for key in args.keywords.split("|"):
+            fetched = fetch_keyword_steps(feature_files_with_tag, key)
+            if fetched is not None:
+                for step in fetched.split("|"):
+                    if step not in result_dict[key]:
+                        result_dict[key].append(step)
+        print json.dumps(result_dict)
 
 except IOError, RuntimeError:
     print "Error : not able to read the specified path"
