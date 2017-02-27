@@ -49,6 +49,7 @@ main {
     float: right;
     width: 80%;
     height: 100%;
+    overflow: auto;
     background-color: white;
 }
 

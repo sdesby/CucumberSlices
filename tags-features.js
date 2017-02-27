@@ -89,3 +89,44 @@ function getFilesForTag() {
         });
     }
 }
+
+function getTagsForFile() {
+    var pyshell = new PythonShell('which_tags_in_which_files.py');
+
+    working_folder = document.getElementById("actual-folder").value;
+    console.log(working_folder);
+
+    if (working_folder == "") {
+        alert("Please choose a working folder first");
+    }
+    else {
+        pyshell.send(working_folder);
+
+        pyshell.on('message', function(message) {
+        var json_from_python = JSON.parse(message);
+        var result = "";
+        for (key in json_from_python) {
+            result += "<div class=\"answer-container\">";
+            result += "<div class=\"key\"><b>" + key + "</b>     <span class=\"accordeon\">Déplier</span></div>";
+
+            var values = json_from_python[key];
+            values.sort();
+            result += "<div class=\"values\"><ul>";
+            for (var value in values) {
+                result += "<li>" + values[value] + "</li>\n";
+            }
+            result += "</ul></div>";
+            result+= "</div>";
+        }
+
+        document.getElementById("main").innerHTML = result;
+        hideAndShow();
+        console.log(message);
+        });
+
+        pyshell.end(function (err) {
+        if(err) throw err;
+        console.log('finished');
+        });
+    }
+}
