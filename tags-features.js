@@ -33,6 +33,23 @@ function getAllTags() {
     }
 }
 
+function hideAndShow(){
+    console.log("hide and show")
+    jQuery(function(){
+            jQuery('.key').click(function(){
+                  $(this).siblings("div.values").toggle();
+                  console.log($(this).text());
+                  var actualTxt = $(this).text();
+                  if(actualTxt.indexOf("Replier") >= 0){
+                      $(this).html("<b>" + actualTxt.split(" ")[0] + "</b>     <span class=\"accordeon\">Déplier</span>");
+              } else {
+                  $(this).html("<b>" + actualTxt.split(" ")[0] + "</b>     <span class=\"accordeon\">Replier</span>");
+              }
+
+            });
+    });
+}
+
 function getFilesForTag() {
     var pyshell = new PythonShell('which_files_for_tag.py');
 
@@ -50,7 +67,7 @@ function getFilesForTag() {
         var result = "";
         for (key in json_from_python) {
             result += "<div class=\"answer-container\">";
-            result += "<div class=\"key\"><b>" + key + "</b></div>";
+            result += "<div class=\"key\"><b>" + key + "</b>     <span class=\"accordeon\">Déplier</span></div>";
 
             var values = json_from_python[key];
             values.sort();
@@ -61,7 +78,9 @@ function getFilesForTag() {
             result += "</ul></div>";
             result+= "</div>";
         }
+
         document.getElementById("main").innerHTML = result;
+        hideAndShow();
         });
 
         pyshell.end(function (err) {

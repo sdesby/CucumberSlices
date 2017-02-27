@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <script src='jquery.min.js' type="text/javascript"></script>
     <title>Cucumber Slices</title>
     <link rel="stylesheet" href="css/styles.css" media="all">
   </head>
@@ -24,7 +23,6 @@
         <ul>
           <li class="aside-li" id="allTags" onclick="getAllTags()">Get all Tags</li>
           <li class="aside-li" id="filesForTag" onclick="getFilesForTag()">Get files for tags</li>
-      </li>
         </ul>
       </nav>
     </aside>
@@ -32,6 +30,7 @@
     </main>
   </div>
   </body>
+  <script>window.$ = window.jQuery = require('./jquery-3.1.1.min.js');</script>
   <script src="local-communication.js"></script>
   <script src="tags-features.js"></script>
   <script>document.getElementById('select-folder').addEventListener('click',selectWorkingFolder,false);</script>

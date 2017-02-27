@@ -24,6 +24,11 @@ h1 {
     padding: 0px 20px 20px 20px;
 }
 
+#main-content {
+    height: 100%;
+    width: 100%;
+}
+
 aside {
     float: left;
     width: 20%;
@@ -40,14 +45,9 @@ aside {
     font-size: 18px;
 }
 
-#main-content {
-    height: 100%;
-}
-
 main {
     float: right;
-    padding: 10px;
-    width: 78%;
+    width: 80%;
     height: 100%;
     background-color: white;
 }
@@ -58,20 +58,26 @@ main {
 
 .answer-container {
     border-bottom: 1px solid black;
-    padding-top: 1px;
-    padding-left: 2px;
 }
 
 .key{
     height: 30px;
     vertical-align: center;
     width: 100%;
+    margin: 0px;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .key:hover {
-    background-color: #39B54A;
+    background-color: #B8E986;
 }
 
-/* .values {
+.values {
     display: none;
-}*/
+}
+
+.accordeon {
+    font-size: 12px;
+    color: grey;
+}
