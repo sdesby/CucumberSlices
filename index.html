@@ -14,7 +14,7 @@
   <div id="working-directory-div">
       <label for="actual-folder">Working Folder:</label>
       <button id="select-folder">Select working folder</button>
-      <p><input type="text" class="input-text" placeholder="Please select a folder" id="actual-folder" disabled="disabled"/></p>
+      <p><input type="text" class="input-text" placeholder="Please select a folder" id="actual-folder" disabled="disabled" required/></p>
   </div>
   </header>
   <div id="main-content">
@@ -24,6 +24,7 @@
           <li class="aside-li" id="allTags" onclick="getAllTags()">Get all Tags</li>
           <li class="aside-li" id="filesForTag" onclick="getFilesForTag()">Get files for tags</li>
           <li class="aside-li" id="tagsForFile" onclick="getTagsForFile()">Get tags for files</li>
+          <li class="aside-li" id="stepsForTag" onclick="chooseTag()">Get steps for tag</li>
         </ul>
       </nav>
     </aside>
