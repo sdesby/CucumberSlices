@@ -41,4 +41,4 @@ try:
             print json.dumps(final_tags)
 
 except IOError:
-    print "Error : not able to read the specified path"
+    print "ERROR : not able to read the specified path"

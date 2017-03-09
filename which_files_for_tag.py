@@ -22,8 +22,7 @@ try:
             feature_files.append(element)
 
     if not feature_files:
-        print("No .feature files in this folder")
-        sys.exit(0)
+        print("ERROR: No .feature files in this folder")
     else:
         for feature_file in feature_files:
             fic = open(feature_file, "r")
@@ -42,5 +41,4 @@ try:
         print json.dumps(files_for_tag)
 
 except IOError, RuntimeError:
-    print "Error: not able to read the specified path"
-sys.exit(0)
+    print "ERROR: not able to read the specified path"

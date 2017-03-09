@@ -13,6 +13,9 @@ function getAllTags() {
         pyshell.send(working_folder);
 
         pyshell.on('message', function(message) {
+            if(message.startsWith("ERROR")) {
+                alert(message);
+            } else {
 
         var tags = JSON.parse(message);
         var table = "<ul>";
@@ -24,6 +27,7 @@ function getAllTags() {
         table += "</ul>";
         document.getElementById("main").innerHTML = table;
         // return message
+    }
         });
 
         pyshell.end(function (err) {
@@ -70,6 +74,9 @@ function getFilesForTag() {
         pyshell.send(working_folder);
 
         pyshell.on('message', function(message) {
+            if(message.startsWith("ERROR")) {
+                alert(message);
+            } else {
         var json_from_python = JSON.parse(message);
         var result = "";
         for (key in json_from_python) {
@@ -88,6 +95,7 @@ function getFilesForTag() {
 
         document.getElementById("main").innerHTML = result;
         hideAndShow();
+}
         });
 
         pyshell.end(function (err) {
@@ -110,6 +118,9 @@ function getTagsForFile() {
         pyshell.send(working_folder);
 
         pyshell.on('message', function(message) {
+            if(message.startsWith("ERROR")) {
+                alert(message);
+            } else {
         var json_from_python = JSON.parse(message);
         var result = "";
         for (key in json_from_python) {
@@ -129,6 +140,7 @@ function getTagsForFile() {
         document.getElementById("main").innerHTML = result;
         hideAndShow();
         console.log(message);
+}
         });
 
         pyshell.end(function (err) {
