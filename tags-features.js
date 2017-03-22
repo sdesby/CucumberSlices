@@ -41,7 +41,7 @@ function hideAndShow() {
     jQuery(function() {
         jQuery('.key').click(function() {
             $(this).siblings("div.values").toggle();
-            var splittedActualTxt = $(this).text().innerHTML();
+            var splittedActualTxt = $(this).html();
             var txtToDisplay = splittedActualTxt.substr(splittedActualTxt.indexOf("<b>"), splittedActualTxt.indexOf("</b>"));
             if ($(this).text().indexOf("Replier") >= 0) {
                 $(this).html("<b>" + txtToDisplay + "</b>     <span class=\"accordeon\">Déplier</span>");
@@ -181,12 +181,16 @@ function getStepsForTag() {
 
     if (choosen_tag == "") {
         alert("Please choose a tag first");
+
+    } else if (!choosen_tag.startsWith("@")) {
+        alert("Tag must tart with \"@\"")
     } else {
         keywords = getKeywordsFromJson();
         var keywordsAsString = "";
         for (value in keywords) {
             keywordsAsString += keywords[value] + "|";
         }
+
         keywordsAsString = keywordsAsString.slice(0, -1);
 
         var options = {
@@ -201,33 +205,33 @@ function getStepsForTag() {
             // results is an array consisting of messages collected during execution
 
             try {
-                var result = "";
-                var json_from_python = JSON.parse(results);
-                for (key in json_from_python) {
-                    console.log(key)
+                if (results[0].startsWith("ERROR")) {
+                    alert(results[0]);
+                } else {
+                    var result = "";
+                    var json_from_python = JSON.parse(results);
+                    for (key in json_from_python) {
+                        var values = json_from_python[key];
 
-                    var values = json_from_python[key];
+                        result += "<div class=\"answer-container\">";
+                        result += "<div class=\"key\"><b>" + key + "(" + values.length + ")</b>     <span class=\"accordeon\">Déplier</span></div>";
 
-                    result += "<div class=\"answer-container\">";
-                    result += "<div class=\"key\"><b>" + key + "(" + values.length + ")</b>     <span class=\"accordeon\">Déplier</span></div>";
-
-
-                    values.sort();
-                    result += "<div class=\"values\"><ul>";
-                    for (var value in values) {
-                        result += "<li class=\"result-list\">" + values[value] + "</li>\n";
+                        values.sort();
+                        result += "<div class=\"values\"><ul>";
+                        for (var value in values) {
+                            result += "<li class=\"result-list\">" + values[value] + "</li>\n";
+                        }
+                        result += "</ul></div>";
+                        result += "</div>";
                     }
-                    result += "</ul></div>";
-                    result += "</div>";
-                }
 
-                document.getElementById("main").innerHTML = document.getElementById("main").innerHTML + result;
-                document.getElementById("actual-tag").placeholder = choosen_tag;
-                hideAndShow();
+                    document.getElementById("main").innerHTML = document.getElementById("main").innerHTML + result;
+                    document.getElementById("actual-tag").placeholder = choosen_tag;
+                    hideAndShow();
+                }
             } catch (err) {
                 document.getElementById("main").innerHTML = err;
             }
-
         });
     }
 }

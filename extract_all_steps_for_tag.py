@@ -63,8 +63,7 @@ try:
             feature_files.append(element)
 
     if not feature_files:
-        LOGGER.error("No .feature files in this folder")
-        sys.exit(0)
+        print "ERROR: No .feature files in this folder"
     else:
         for f in feature_files:
             fic = open(f, "r")
@@ -75,15 +74,17 @@ try:
                     feature_files_with_tag.append(f)
             fic.close()
 
-        result_dict = defaultdict(list)
-        for key in args.keywords.split("|"):
-            fetched = fetch_keyword_steps(feature_files_with_tag, key)
-            if fetched is not None:
-                for step in fetched.split("|"):
-                    if step not in result_dict[key]:
-                        result_dict[key].append(step)
-        print json.dumps(result_dict)
+        if not feature_files_with_tag:
+            print "ERROR: Tag not find. Please enter an existing tag for choosen folder."
+        else:
+            result_dict = defaultdict(list)
+            for key in args.keywords.split("|"):
+                fetched = fetch_keyword_steps(feature_files_with_tag, key)
+                if fetched is not None:
+                    for step in fetched.split("|"):
+                        if step not in result_dict[key]:
+                            result_dict[key].append(step)
+            print json.dumps(result_dict)
 
 except IOError, RuntimeError:
-    print "Error : not able to read the specified path"
-    sys.exit(0)
+    print "ERROR: not able to read the specified path"
