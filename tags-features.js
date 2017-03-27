@@ -155,10 +155,11 @@ function getKeywordsFromJson() {
     }
 
     var keywords = [];
-    var french_language = json_gherkin_languages["fr"]
-    for (english_keyword in french_language) {
-        console.log("english key: " + english_keyword);
-        var actualKeywordsForLanguages = french_language[english_keyword];
+    var selected_language = document.getElementById("actual-language").value;
+    var language = json_gherkin_languages[selected_language]
+    for (keyword in language) {
+        console.log("english key: " + keyword);
+        var actualKeywordsForLanguages = language[keyword];
 
         for (k in actualKeywordsForLanguages) {
             keywords.push(actualKeywordsForLanguages[k]);
