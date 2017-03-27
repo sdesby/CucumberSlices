@@ -13,6 +13,6 @@ Knowing all of this, help you write better Gherkin steps and organize your proje
 ## Install
 
 Once you have intalled node.js and clone the project:
-1. Go to your project folder
+
+1. Go to your project folder 
 2. Run `npm install`. It will install electron framework
-3. Run `npm install python-shell`
