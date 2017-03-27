@@ -4,6 +4,7 @@
   "description": "Manage Features, Scenarios, Steps and Tags of your Cucumber projects",
   "main": "main.js",
   "scripts": {
+    "postinstall": "pip install -r requirements.txt",
     "start": "electron ."
   },
   "repository": "https://github.com/sdesby/CucumberSlices",

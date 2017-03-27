@@ -9,6 +9,7 @@ Knowing all of this, help you write better Gherkin steps and organize your proje
 - npm
 - electron
 - python-shell _// Module to call python scripts needed in the app_
+- python (with pip)
 
 ## Install
 
