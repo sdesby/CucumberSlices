@@ -24,10 +24,6 @@ h1 {
     padding: 0px 20px 20px 20px;
 }
 
-#language-div {
-    padding: 0px 20px 20px 20px;
-}
-
 #main-content {
     height: 100%;
     width: 100%;
@@ -65,12 +61,28 @@ main {
 
 #tag-selection-div {
     padding: 5px;
+    display: inline-block;
+    width: 40%;
+}
+
+#language-div {
+    padding: 5px;
+    display: inline-block;
+    width: 40%;
 }
 
 .input-text {
     padding: 5px;
     color: black;
     font-weight: bold;
+}
+
+.select {
+    padding: 5px;
+    color: black;
+    font-weight: bold;
+    width: 20em;
+    border: 2px solid orange;
 }
 
 button {

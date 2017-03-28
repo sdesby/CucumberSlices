@@ -32,7 +32,6 @@ function getAllTags() {
 
         pyshell.end(function(err) {
             if (err) throw err;
-            console.log('finished');
         });
     }
 }
@@ -52,9 +51,9 @@ function hideAndShow() {
     });
 }
 
-function clearStepsList() {
-    if (document.getElementById("steps-list")) {
-        var element = document.getElementById("steps-list");
+function clearTagsForFileBody() {
+    if (document.getElementById("tagsforfile-body")) {
+        var element = document.getElementById("tagsforfile-body");
         element.outerHTML = "";
         delete element;
     }
@@ -105,7 +104,6 @@ function getTagsForFile() {
     var pyshell = new PythonShell('which_tags_in_which_files.py');
 
     working_folder = document.getElementById("actual-folder").value;
-    console.log(working_folder);
 
     if (working_folder == "") {
         alert("Please choose a working folder first");
@@ -134,7 +132,6 @@ function getTagsForFile() {
 
                 document.getElementById("main").innerHTML = result;
                 hideAndShow();
-                console.log(message);
             }
         });
 
@@ -147,7 +144,6 @@ function getTagsForFile() {
 
 function getKeywordsFromJson() {
     var json_gherkin_languages = JsonReader.sync("given-when-then.json");
-    console.log(json_gherkin_languages);
 
     var languages = [];
     for (language in json_gherkin_languages) {
@@ -158,34 +154,36 @@ function getKeywordsFromJson() {
     var selected_language = document.getElementById("actual-language").value;
     var language = json_gherkin_languages[selected_language]
     for (keyword in language) {
-        console.log("english key: " + keyword);
         var actualKeywordsForLanguages = language[keyword];
 
         for (k in actualKeywordsForLanguages) {
             keywords.push(actualKeywordsForLanguages[k]);
         }
     }
-    console.log("Keywords:");
-    console.log(keywords);
     return keywords;
 }
 
 function getStepsForTag() {
-    var pyshell = require('python-shell');
+
     working_folder = document.getElementById("actual-folder").value;
 
     if (working_folder == "") {
         alert("Please choose a working folder first");
+        return
     }
 
     choosen_tag = document.getElementById("actual-tag").value;
 
     if (choosen_tag == "") {
         alert("Please choose a tag first");
-
     } else if (!choosen_tag.startsWith("@")) {
         alert("Tag must tart with \"@\"")
     } else {
+
+        clearTagsForFileBody()
+
+        var pyshell = require('python-shell');
+
         keywords = getKeywordsFromJson();
         var keywordsAsString = "";
         for (value in keywords) {
@@ -201,6 +199,7 @@ function getStepsForTag() {
             scriptPath: '',
             args: [working_folder, choosen_tag, keywordsAsString]
         };
+
         pyshell.run("extract_all_steps_for_tag.py", options, function(err, results) {
             if (err) throw err;
             // results is an array consisting of messages collected during execution
@@ -209,12 +208,12 @@ function getStepsForTag() {
                 if (results[0].startsWith("ERROR")) {
                     alert(results[0]);
                 } else {
-                    var result = "";
+                    var result = "<div id=\"tagsforfile-body\">";
                     var json_from_python = JSON.parse(results);
                     for (key in json_from_python) {
                         var values = json_from_python[key];
 
-                        result += "<div class=\"answer-container\">";
+                        result += "<div id=\"answer-container\" class=\"answer-container\">";
                         result += "<div class=\"key\"><b>" + key + "(" + values.length + ")</b>     <span class=\"accordeon\">Déplier</span></div>";
 
                         values.sort();
@@ -225,6 +224,7 @@ function getStepsForTag() {
                         result += "</ul></div>";
                         result += "</div>";
                     }
+                    result += "</div>";
 
                     document.getElementById("main").innerHTML = document.getElementById("main").innerHTML + result;
                     document.getElementById("actual-tag").placeholder = choosen_tag;
@@ -238,8 +238,20 @@ function getStepsForTag() {
 }
 
 function chooseTag() {
-    document.getElementById('main').innerHTML = "<div id=\"tag-selection-div\">" +
-        "<label for=\"actual-tag\">Choosen tag:</label>" +
-        "<p><input type=\"text\" class=\"input-text\" placeholder=\"Please select a tag\" id=\"actual-tag\" required onfocus=\"clearStepsList()\"/>" +
-        "<button id=\"tag-choice-button\" onclick=\"getStepsForTag()\">Ok</button></p></div>"
+
+    document.getElementById('main').innerHTML = "<div id=\"tagsforfile-head\">" +
+        "<div id=\"language-div\">" +
+        "<label for=\"actual-language\">Choose your working language:</label>" +
+        "<p>" +
+        "<select id=\"actual-language\" class=\"select\">" +
+        "<option value=\"fr\">Français</option>" +
+        "<option value=\"en\">English</option>" +
+        "</select></p>" +
+        "</div>" +
+        "<div id=\"tag-selection-div\">" +
+        "<label for=\"actual-tag\">Choose the tag:</label>" +
+        "<p><input type=\"text\" class=\"input-text\" placeholder=\"Please select a tag\" id=\"actual-tag\" required/>" +
+        "<button id=\"tag-choice-button\" onclick=\"getStepsForTag()\">Ok</button></p></div>" +
+
+        "</div>";
 }
