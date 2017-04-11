@@ -20,11 +20,12 @@ try:
         for f in feature_files:
             fic = open(f, "r")
             lines = fic.readlines()
-            for l in lines:
-                index = l.find('@')
+            for line in lines:
+                index = line.find('@')
                 if index != -1:  # means we found @
-                    current_tags_list = l.split()
-                    tags.append(current_tags_list)
+                    if line.startswith("@"):
+                        current_tags_list = line.split()
+                        tags.append(current_tags_list)
             fic.close()
 
         if not tags:

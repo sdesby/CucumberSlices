@@ -43,14 +43,15 @@ try:
             for line in lines:
                 index = line.find('@')
                 if index != -1:
-                    current_tags_list = line.split()
-                    tags.append(current_tags_list)
+                    if line.startswith("@"):
+                        current_tags_list = line.split()
+                        tags.append(current_tags_list)
 
-                    file_name = feature_file.encode("utf-8")
-                    file_name = file_name.replace(folder, "")
-                    for tag in current_tags_list:
-                        if tag not in tags_in_file[file_name]:
-                            tags_in_file[file_name].append(tag)
+                        file_name = feature_file.encode("utf-8")
+                        file_name = file_name.replace(folder, "")
+                        for tag in current_tags_list:
+                            if tag not in tags_in_file[file_name]:
+                                tags_in_file[file_name].append(tag)
         fic.close()
         print json.dumps(tags_in_file)
 
