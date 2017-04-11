@@ -143,7 +143,7 @@ function getTagsForFile() {
 }
 
 function getKeywordsFromJson() {
-    var json_gherkin_languages = JsonReader.sync("given-when-then.json");
+    var json_gherkin_languages = JsonReader.sync("resources/given-when-then.json");
 
     var languages = [];
     for (language in json_gherkin_languages) {
