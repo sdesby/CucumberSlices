@@ -125,3 +125,9 @@ button {
     padding: 3px;
     border-bottom: 1px solid #B8E986;
 }
+
+.error {
+    text-align: center;
+    margin: 20px;
+    color: red;
+}

@@ -173,6 +173,7 @@ function getStepsForTag() {
     }
 
     choosen_tag = document.getElementById("actual-tag").value;
+    choosen_language = document.getElementById("actual-language").value;
 
     if (choosen_tag == "") {
         alert("Please choose a tag first");
@@ -201,6 +202,7 @@ function getStepsForTag() {
         };
 
         pyshell.run("extract_all_steps_for_tag.py", options, function(err, results) {
+            console.log(results);
             if (err) throw err;
             // results is an array consisting of messages collected during execution
 
@@ -208,27 +210,37 @@ function getStepsForTag() {
                 if (results[0].startsWith("ERROR")) {
                     alert(results[0]);
                 } else {
-                    var result = "<div id=\"tagsforfile-body\">";
                     var json_from_python = JSON.parse(results);
-                    for (key in json_from_python) {
-                        var values = json_from_python[key];
-
-                        result += "<div id=\"answer-container\" class=\"answer-container\">";
-                        result += "<div class=\"key\"><b>" + key + "(" + values.length + ")</b>     <span class=\"accordeon\">Unfold</span></div>";
-
-                        values.sort();
-                        result += "<div class=\"values\"><ul>";
-                        for (var value in values) {
-                            result += "<li class=\"result-list\">" + values[value] + "</li>\n";
-                        }
-                        result += "</ul></div>";
+                    var result = "<div id=\"tagsforfile-body\">";
+                    if (Object.keys(json_from_python).length === 0) {
+                        result += "<p class=\"error\"> Sorry but no result were found.</p>";
                         result += "</div>";
-                    }
-                    result += "</div>";
+                        document.getElementById("main").innerHTML = document.getElementById("main").innerHTML + result;
+                        document.getElementById("actual-tag").placeholder = choosen_tag;
+                        document.getElementById("actual-language").value = choosen_language;
 
-                    document.getElementById("main").innerHTML = document.getElementById("main").innerHTML + result;
-                    document.getElementById("actual-tag").placeholder = choosen_tag;
-                    hideAndShow();
+                    } else {
+                        for (key in json_from_python) {
+                            var values = json_from_python[key];
+
+                            result += "<div id=\"answer-container\" class=\"answer-container\">";
+                            result += "<div class=\"key\"><b>" + key + "(" + values.length + ")</b>     <span class=\"accordeon\">Unfold</span></div>";
+
+                            values.sort();
+                            result += "<div class=\"values\"><ul>";
+                            for (var value in values) {
+                                result += "<li class=\"result-list\">" + values[value] + "</li>\n";
+                            }
+                            result += "</ul></div>";
+                            result += "</div>";
+                        }
+                        result += "</div>";
+
+                        document.getElementById("main").innerHTML = document.getElementById("main").innerHTML + result;
+                        document.getElementById("actual-tag").placeholder = choosen_tag;
+                        document.getElementById("actual-language").value = choosen_language;
+                        hideAndShow();
+                    }
                 }
             } catch (err) {
                 document.getElementById("main").innerHTML = err;
