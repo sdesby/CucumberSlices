@@ -7,6 +7,7 @@ import logging
 import sys
 import json
 import codecs
+import re
 from collections import defaultdict
 
 root = logging.getLogger()
@@ -43,7 +44,8 @@ def fetch_keyword_steps(files, keyword):
         for l in lines:
             index = l.find(keyword)
             if index != -1:
-                steps.append(l.lstrip())
+                if l.lstrip().startswith(keyword):
+                    steps.append(l.lstrip())
     fic.close()
     if len(steps) > 0:
         steps = list(set(steps))
