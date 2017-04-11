@@ -42,10 +42,10 @@ function hideAndShow() {
             $(this).siblings("div.values").toggle();
             var splittedActualTxt = $(this).html();
             var txtToDisplay = splittedActualTxt.substr(splittedActualTxt.indexOf("<b>"), splittedActualTxt.indexOf("</b>"));
-            if ($(this).text().indexOf("Replier") >= 0) {
-                $(this).html("<b>" + txtToDisplay + "</b>     <span class=\"accordeon\">Déplier</span>");
+            if ($(this).text().indexOf("Fold") >= 0) {
+                $(this).html("<b>" + txtToDisplay + "</b>     <span class=\"accordeon\">Unfold</span>");
             } else {
-                $(this).html("<b>" + txtToDisplay + "</b>     <span class=\"accordeon\">Replier</span>");
+                $(this).html("<b>" + txtToDisplay + "</b>     <span class=\"accordeon\">Fold</span>");
             }
         });
     });
@@ -78,7 +78,7 @@ function getFilesForTag() {
                 var result = "";
                 for (key in json_from_python) {
                     result += "<div class=\"answer-container\">";
-                    result += "<div class=\"key\"><b>" + key + "</b>     <span class=\"accordeon\">Déplier</span></div>";
+                    result += "<div class=\"key\"><b>" + key + "</b>     <span class=\"accordeon\">Unfold</span></div>";
                     var values = json_from_python[key];
                     values.sort();
                     result += "<div class=\"values\"><ul>";
@@ -118,7 +118,7 @@ function getTagsForFile() {
                 var result = "";
                 for (key in json_from_python) {
                     result += "<div class=\"answer-container\">";
-                    result += "<div class=\"key\"><b>" + key + "</b>     <span class=\"accordeon\">Déplier</span></div>";
+                    result += "<div class=\"key\"><b>" + key + "</b>     <span class=\"accordeon\">Unfold</span></div>";
 
                     var values = json_from_python[key];
                     values.sort();
@@ -214,7 +214,7 @@ function getStepsForTag() {
                         var values = json_from_python[key];
 
                         result += "<div id=\"answer-container\" class=\"answer-container\">";
-                        result += "<div class=\"key\"><b>" + key + "(" + values.length + ")</b>     <span class=\"accordeon\">Déplier</span></div>";
+                        result += "<div class=\"key\"><b>" + key + "(" + values.length + ")</b>     <span class=\"accordeon\">Unfold</span></div>";
 
                         values.sort();
                         result += "<div class=\"values\"><ul>";
