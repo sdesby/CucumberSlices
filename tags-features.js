@@ -2,7 +2,7 @@ var PythonShell = require('python-shell');
 const JsonReader = require("load-json-file");
 
 function getAllTags() {
-    var pyshell = new PythonShell('all_tags.py');
+    var pyshell = new PythonShell('python-scripts/all_tags.py');
 
     working_folder = document.getElementById("actual-folder").value;
     console.log(working_folder);
@@ -60,7 +60,7 @@ function clearTagsForFileBody() {
 }
 
 function getFilesForTag() {
-    var pyshell = new PythonShell('which_files_for_tag.py');
+    var pyshell = new PythonShell('python-scripts/which_files_for_tag.py');
 
     working_folder = document.getElementById("actual-folder").value;
     console.log(working_folder);
@@ -101,7 +101,7 @@ function getFilesForTag() {
 }
 
 function getTagsForFile() {
-    var pyshell = new PythonShell('which_tags_in_which_files.py');
+    var pyshell = new PythonShell('python-scripts/which_tags_in_which_files.py');
 
     working_folder = document.getElementById("actual-folder").value;
 
@@ -201,7 +201,7 @@ function getStepsForTag() {
             args: [working_folder, choosen_tag, keywordsAsString]
         };
 
-        pyshell.run("extract_all_steps_for_tag.py", options, function(err, results) {
+        pyshell.run("python-scripts/extract_all_steps_for_tag.py", options, function(err, results) {
             console.log(results);
             if (err) throw err;
             // results is an array consisting of messages collected during execution
