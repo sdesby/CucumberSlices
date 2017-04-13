@@ -5,7 +5,9 @@
   "main": "main.js",
   "scripts": {
     "postinstall": "pip install -r requirements.txt",
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist": "build"
   },
   "repository": "https://github.com/sdesby/CucumberSlices",
   "keywords": [
@@ -15,9 +17,20 @@
   "author": "sdesby",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^1.4.1"
+    "electron-builder": "^16.8.3",
+    "electron": "^1.4.1",
+    "load-json-file": "^2.0.0"
   },
   "dependencies": {
-    "python-shell": "0.4.0"  
+    "python-shell": "0.4.0",
+    "load-json-file": "^2.0.0"
+  },
+   "build": {
+    "appId": "com.sdesby.cucumberslices",
+    "extraResources": [
+      "python-scripts",
+      "gherkin-examples",
+      "resources"
+    ]
   }
 }
