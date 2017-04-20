@@ -1,5 +1,6 @@
+# -*- coding: UTF-8 -*-
 import os
-from path import Path
+from modules.path import Path
 import sys
 from collections import defaultdict
 import json

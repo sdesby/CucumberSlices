@@ -19,3 +19,10 @@ Once you have intalled node.js and clone the project:
 
 1. Go to your project folder
 2. Run `npm install`. It will install electron framework
+
+## Packaging
+
+Some changes had to be made for packaging the app, so if you want a ready to package version, go to branch "Ready-to-package".
+Once there :
+1. Install builder module `npm install electron-builder`
+2. Run `npm run dist`

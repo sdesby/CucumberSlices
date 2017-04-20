@@ -1,4 +1,6 @@
-from path import Path
+# -*- coding: UTF-8 -*-
+
+from modules.path import Path
 import os
 import sys
 import json

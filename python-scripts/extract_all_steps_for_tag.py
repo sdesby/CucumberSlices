@@ -1,7 +1,6 @@
-#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-from path import path
+from modules.path import Path
 import argparse
 import logging
 import sys
@@ -60,7 +59,7 @@ try:
 
     folder_name = args.folder
     tag_name = args.tag
-    for element in path(folder_name).walkfiles():
+    for element in Path(folder_name).walkfiles():
         if element.endswith('.feature'):
             feature_files.append(element)
 
