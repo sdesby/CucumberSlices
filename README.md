@@ -16,6 +16,7 @@ Knowing all of this, help you write better Gherkin steps and organize your proje
 ## Install
 
 Once you have intalled node.js and clone the project:
-
-1. Go to your project folder
-2. Run `npm install`. It will install electron framework
+1. Ensure you have Python 2.7 and pip installed on your machine
+2. Go to your project folder
+3. Run `npm install`. It will install all needed npm modules and python requirements
+4. Run `npm start` to start the app
