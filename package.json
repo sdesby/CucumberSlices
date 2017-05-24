@@ -12,7 +12,8 @@
   "repository": "https://github.com/sdesby/CucumberSlices",
   "keywords": [
     "cucumber",
-    "cucumber-slices"
+    "cucumber-slices",
+    "slices"
   ],
   "author": "sdesby",
   "license": "MIT",
@@ -24,20 +25,5 @@
   "dependencies": {
     "python-shell": "0.4.0",
     "load-json-file": "^2.0.0"
-  },
-   "build": {
-    "appId": "com.sdesby.cucumberslices",
-    "extraResources": [
-      "python-scripts/*",
-      "gherkin-examples/*",
-      "resources/*"
-    ]
-  },
-  "mac": {
-    "extraResources": [
-      "python-scripts/*",
-      "gherkin-examples/*",
-      "resources/*"
-    ]
   }
 }
